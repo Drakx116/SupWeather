@@ -1,3 +1,6 @@
+import { DashboardRoutes } from "./src/controllers/dashboard";
+import { UsersRoutes } from "./src/routes/users";
+
 const express = require('express');
 const ENV = require('dotenv').config().parsed;
 const bodyParser = require('body-parser');
@@ -13,11 +16,7 @@ mongoose.connect(ENV.ATLAS_DATABASE_CONNECTION_PATH, { useNewUrlParser: true }).
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.route('/')
-    .get((req, res) => {
-        res.status(200).json({
-            data: 'SupWeather API is Alive !'
-        })
-    });
+app.use('/', DashboardRoutes);
+app.use("/auth", UsersRoutes);
 
 app.listen(port, () => console.log(`Server is running on localhost:${port}`));
