@@ -1,9 +1,11 @@
-import { register, login } from "../controllers/users";
+import { register, login, needAuthentication, getUsers } from "../controllers/users";
 
 export const UsersRoutes = require('express').Router();
 
 
 UsersRoutes
-    .post('/register', (req, res) => register(req, res))
+    .get('/users', needAuthentication, getUsers)
 
-    .post('/login', (req, res) => login(req, res));
+    .post('/register', register)
+
+    .post('/login', login);

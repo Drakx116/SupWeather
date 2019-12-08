@@ -1,9 +1,19 @@
 import { User } from "../models/users";
 
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const ENV = require('dotenv').config().parsed;
+
+export const getUsers = (req, res) => {
+    User.find({}, (error, users) => {
+        if(error) {
+            res.status(401).send('Cannot get users');
+        }
+        else {
+            res.status(200).send({ users });
+        }
+    });
+};
 
 export const register = (req, res) =>
 {
@@ -12,13 +22,15 @@ export const register = (req, res) =>
         res.status(400).json({ error: 'Missing parameters' });
     }
 
-    // Add unique email constraint
+    // Add unique email constraint validation
     const user = new User(req.body);
     user.password = bcrypt.hashSync(req.body.password, 12);
     user.save((error, newUser) => {
-        if(error) return res.status(500).json({ error: 'Cannot save the user.' });
+        if(error) {
+            res.status(500).json({ error: 'Cannot save the user.' });
+        }
 
-        return res.json(newUser);
+        res.status(201).json(newUser);
     });
 };
 
@@ -31,13 +43,29 @@ export const login = (req, res) => {
         }
 
         if(error || !(user))
-            return res.status(401).json({ error: 'Cannot find any related user.'} );
+            res.status(401).json({ error: 'Cannot find any related user.'} );
 
         if(!(User.checkPasswords(req.body.password, user.password)))
-            return res.status(401).json({ error: 'Invalid credentials.' });
+            res.status(401).json({ error: 'Invalid credentials.' });
 
-        return res.json({
-            token: jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET )
+        // Generates and sets user token
+        const userToken = jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET );
+
+        req.headers.authorizations = userToken;
+        console.log(req.headers.authorizations);
+
+        res.json({
+            message: 'Authenticated user',
+            token: userToken
         });
     });
+};
+
+export const needAuthentication = (req, res, next) => {
+    if(req.user) {
+        next();
+    }
+    else {
+        res.status(401).json({ error: 'Invalid token.' });
+    }
 };
