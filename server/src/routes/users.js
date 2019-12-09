@@ -1,11 +1,7 @@
-import { register, login, needAuthentication, getUsers } from "../controllers/users";
+import { needAuthentication } from "../controllers/auth";
+import { getUsers } from "../controllers/users";
 
-export const UsersRoutes = require('express').Router();
+export const UserRoutes = require('express').Router();
 
-
-UsersRoutes
-    .get('/users', needAuthentication, getUsers)
-
-    .post('/register', register)
-
-    .post('/login', login);
+UserRoutes
+    .get('/', needAuthentication, getUsers);

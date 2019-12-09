@@ -1,5 +1,6 @@
 import { DashboardRoutes } from "./src/controllers/dashboard";
-import { UsersRoutes } from "./src/routes/users";
+import { AuthRoutes } from "./src/routes/auth";
+import { UserRoutes } from "./src/routes/users";
 
 const express = require('express');
 const ENV = require('dotenv').config().parsed;
@@ -19,24 +20,24 @@ app.use(bodyParser.json());
 
 // JWT
 app.use((req, res, next) => {
-    if (!req.headers.authorizations) {
+    if (!req.headers.authorization) {
         req.user = undefined;
-        next();
     }
     else {
-        jwt.verify(req.headers.authorizations, ENV.JWT_SECRET, (error, decode) => {
+        jwt.verify(req.headers.authorization, ENV.JWT_SECRET, (error, decode) => {
             if (error ) {
                 res.json({ error: 'Cannot authenticate user.' });
             }
 
             req.user = decode;
-            next();
         });
     }
 
+    next();
 });
 
 app.use('/', DashboardRoutes);
-app.use("/auth", UsersRoutes);
+app.use("/auth", AuthRoutes);
+app.use('/users', UserRoutes);
 
 app.listen(port, () => console.log(`Server is running on localhost:${port}`));
