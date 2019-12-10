@@ -1,4 +1,4 @@
-import { User } from "../models/users";
+import { User } from "../../models/users";
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -40,23 +40,12 @@ export const login = (req, res) => {
         }
 
         // Generates and sets user token
-        const userToken = jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET );
+        const token = jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET );
 
-        req.headers.authorizations = userToken;
-
-        res.json({
+        res.cookie('token', token, { httpOnly: true }).status(200).send({
             id: user._id,
             pseudo: user.pseudo,
-            token: userToken
-        });
+            token: token
+        })
     });
-};
-
-export const needAuthentication = (req, res, next) => {
-    if(req.user) {
-        next();
-    }
-    else {
-        return res.status(401).json({ error: 'Invalid token.' });
-    }
 };
