@@ -49,3 +49,13 @@ export const login = (req, res) => {
         })
     });
 };
+
+export const logout = (req, res) => {
+
+    if(res.cookie('token')) {
+        res.clearCookie('token');
+    }
+
+    res.json({ 'message': 'User disconnected' });
+
+};
