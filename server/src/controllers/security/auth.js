@@ -32,7 +32,7 @@ export const login = (req, res) => {
         }
 
         if(error || !(user)) {
-            return res.status(401).json({ error: 'Cannot find any related user.'} );
+            return res.status(404).json({ error: 'Cannot find any related user.'} );
         }
 
         if(!(User.checkPasswords(req.body.password, user.password))) {
