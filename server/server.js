@@ -7,6 +7,7 @@ const ENV = require('dotenv').config().parsed;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ mongoose.connect(ENV.ATLAS_DATABASE_CONNECTION_PATH, { useNewUrlParser: true }).
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/', DashboardRoutes);
 app.use("/auth", AuthRoutes);
