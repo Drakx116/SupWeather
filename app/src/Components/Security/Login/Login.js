@@ -33,6 +33,8 @@ export class Login extends React.Component {
 
         if(this.state.pseudo && this.state.password)
         {
+            this.setState({ invalidForm: '' });
+
             let data = {
                 pseudo: this.state.pseudo,
                 password: this.state.password
@@ -46,9 +48,10 @@ export class Login extends React.Component {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then( res => {
-                    cookie.save('token', res.data.token);
-                } )
+                .then(res => res.json())
+                .then(data => {
+                    cookie.save('token', data.token);
+                })
 
                 .catch( error => console.error('Error', error) );
         }
