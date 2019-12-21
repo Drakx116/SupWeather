@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 
-import { authAndRedirect } from "../../../API/login";
+import { authAndRedirect } from "../../API/login";
 
 class Login extends React.Component {
 
