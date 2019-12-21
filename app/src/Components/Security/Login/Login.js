@@ -1,7 +1,8 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import cookie from 'react-cookies';
 
-export class Login extends React.Component {
+class Login extends React.Component {
 
     constructor(props) {
         super(props);
@@ -51,6 +52,7 @@ export class Login extends React.Component {
                 .then(res => res.json())
                 .then(data => {
                     cookie.save('token', data.token);
+                    this.props.history.push('/');
                 })
 
                 .catch( error => console.error('Error', error) );
@@ -86,3 +88,5 @@ export class Login extends React.Component {
         );
     }
 }
+
+export default withRouter(Login);

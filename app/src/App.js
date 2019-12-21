@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { Dashboard } from "./Components/Dashboard/Dashboard";
-import {Login } from "./Components/Security/Login/Login";
+import Login from "./Components/Security/Login/Login";
 
 function App() {
   return (
