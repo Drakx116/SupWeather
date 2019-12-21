@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import cookie from 'react-cookies';
+
+import { authAndRedirect } from "../../../API/login";
 
 class Login extends React.Component {
 
@@ -32,30 +33,16 @@ class Login extends React.Component {
         // Avoids page refreshment
         event.preventDefault();
 
-        if(this.state.pseudo && this.state.password)
-        {
+        if(this.state.pseudo && this.state.password) {
             this.setState({ invalidForm: '' });
 
-            let data = {
-                pseudo: this.state.pseudo,
-                password: this.state.password
-            };
-
-            fetch('http://localhost:3000/auth/login',
+            authAndRedirect(
                 {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    cookie.save('token', data.token);
-                    this.props.history.push('/');
-                })
-
-                .catch( error => console.error('Error', error) );
+                    pseudo: this.state.pseudo,
+                    password: this.state.password,
+                },
+                this.props
+            );
         }
         else {
             this.setState({ invalidForm: 'Empty fields.' });
