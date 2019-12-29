@@ -2,22 +2,23 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
+import cookie from "react-cookies";
 
 import { Dashboard } from "./Components/Dashboard/Dashboard";
 import Login from "./Components/Security/Login";
+import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
+  // Checks if token exists
+  let token = !!(cookie.load('token'));
+
   return (
     <Router>
         <div className="header">
             <h2> SupWeather </h2>
-            <ul>
-                <li><Link to="/"> Dashboard </Link></li>
-                <li><Link to="/login"> Login </Link></li>
-            </ul>
+            <Navbar isAuth={ token }/>
         </div>
 
         <Switch>
