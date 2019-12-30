@@ -8,6 +8,7 @@ import cookie from "react-cookies";
 
 import { Dashboard } from "./Components/Dashboard/Dashboard";
 import Login from "./Components/Security/Login";
+import Logout from "./Components/Security/Logout";
 import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
@@ -22,12 +23,11 @@ function App() {
         </div>
 
         <Switch>
-            <Route exact path="/">
-                <Dashboard />
-            </Route>
-            <Route exact path="/login">
-                <Login />
-            </Route>
+            <Route exact path="/" component={Dashboard} />
+
+            <Route exact path="/login" component={Login} />
+
+            <Route exact path="/logout" component={Logout} />
         </Switch>
     </Router>
   );
