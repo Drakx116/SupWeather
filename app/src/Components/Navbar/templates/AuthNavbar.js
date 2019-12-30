@@ -6,7 +6,7 @@ export class AuthNavbar extends React.Component {
         return(
             <ul>
                 <li><Link to="/"> Dashboard </Link></li>
-                <li><Link to="/login"> Logout </Link></li>
+                <li><Link to="/logout"> Logout </Link></li>
             </ul>
         );
     }
