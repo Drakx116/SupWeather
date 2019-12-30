@@ -14,7 +14,7 @@ export const authAndRedirect = (data, props) => {
             cookie.save('token', data.token);
 
             // Redirect
-            props.history.push('/');
+            window.location.reload();
         })
 
         .catch( error => console.error('Error', error) );
