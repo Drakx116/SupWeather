@@ -10,8 +10,8 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            pseudo: undefined,
-            password: undefined,
+            pseudo: '',
+            password: '',
             invalidForm: ''
         };
 
@@ -22,10 +22,12 @@ class Login extends React.Component {
 
     // Input handlers
     changePseudo(event) {
+        event.preventDefault();
         this.setState({ pseudo: event.target.value });
     }
 
     changePassword(event) {
+        event.preventDefault();
         this.setState({ password: event.target.value });
     }
 
