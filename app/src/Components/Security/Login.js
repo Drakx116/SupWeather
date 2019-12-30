@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
+import cookie from "react-cookies";
 
 import { authAndRedirect } from "../../API/login";
 
@@ -50,6 +51,11 @@ class Login extends React.Component {
     }
 
     render() {
+        // Next redirect to /profile
+        if(cookie.load('token')) {
+            this.props.history.push('/');
+        }
+
         return (
             <div className="component-container">
                 <h2> Welcome back ! </h2>
