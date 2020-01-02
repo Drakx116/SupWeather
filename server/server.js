@@ -1,6 +1,6 @@
 import { DashboardRoutes } from "./src/controllers/dashboard";
 import { AuthRoutes } from "./src/routes/security/auth";
-import { UserRoutes } from "./src/routes/users";
+import { WeatherRoutes } from './src/routes/weather';
 
 const express = require('express');
 const ENV = require('dotenv').config().parsed;
@@ -23,6 +23,6 @@ app.use(cors());
 
 app.use('/', DashboardRoutes);
 app.use("/auth", AuthRoutes);
-app.use('/users', UserRoutes);
+app.use('/weather', WeatherRoutes);
 
 app.listen(port, () => console.log(`Server is running on localhost:${port}`));
