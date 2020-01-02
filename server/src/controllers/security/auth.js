@@ -23,7 +23,8 @@ export const register = (req, res) =>
     });
 };
 
-export const login = (req, res) => {
+export const login = (req, res) =>
+{
     User.findOne({ pseudo: req.body.pseudo }, (error, user) =>
     {
         // Checks parameters
@@ -50,12 +51,12 @@ export const login = (req, res) => {
     });
 };
 
-export const logout = (req, res) => {
+export const logout = (req, res) =>
+{
+    // Cookie is already checked in the 'needAuthentication' method
+    res.clearCookie('token');
 
-    if(res.cookie('token')) {
-        res.clearCookie('token');
-    }
-
-    res.json({ 'message': 'User disconnected' });
-
+    res.json({
+        'message': 'User disconnected'
+    });
 };
