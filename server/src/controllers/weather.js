@@ -16,6 +16,29 @@ export const getCityWeather = (req, res) => {
      */
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_TOKEN}&units=${format}`, { method: 'GET' })
         .then(res => res.json())
-        .then(data => res.json({ weather: data }))
+        .then(data => {
+            const sanitizedWeatherData = getDetailedWeatherData(data);
+            res.json({ weather: sanitizedWeatherData })
+        })
+
         .catch((error) => res.json({ error: error }));
+};
+
+const getDetailedWeatherData = (weather) => {
+    return {
+        city: weather.name,
+        status: weather.weather.main,
+        description: weather.weather.description,
+        humidity: weather.main.humidity,
+        temperature: {
+            current: weather.main.temp,
+            mix: weather.main.temp_min,
+            max: weather.main.temp_max,
+            feels_like: weather.main.feels_like
+        },
+        wind: {
+            speed: weather.wind.speed,
+            direction: weather.wind.deg,
+        }
+    };
 };
