@@ -43,7 +43,9 @@ export const login = (req, res) =>
         // Generates and sets user token
         const token = jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET );
 
-        res.cookie('token', token, { httpOnly: true }).status(200).send({
+        res.cookie('user', user._id, { httpOnly: true });
+
+        res.cookie('token', token, { httpOnly: true }).status(200).json({
             id: user._id,
             pseudo: user.pseudo,
             token: token
@@ -55,6 +57,7 @@ export const logout = (req, res) =>
 {
     // Cookie is already checked in the 'needAuthentication' method
     res.clearCookie('token');
+    res.clearCookie('user');
 
     res.json({
         'message': 'User disconnected'
