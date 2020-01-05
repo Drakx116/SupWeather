@@ -17,18 +17,18 @@ export const getCityWeather = (req, res) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_TOKEN}&units=${format}`, { method: 'GET' })
         .then(res => res.json())
         .then(data => {
-            const sanitizedWeatherData = getDetailedWeatherData(data);
-            res.json({ weather: sanitizedWeatherData })
+            res.json({ weather: getDetailedWeatherData(data) })
         })
 
         .catch((error) => res.json({ error: error }));
 };
 
-const getDetailedWeatherData = (weather) => {
+const getDetailedWeatherData = (weather) =>
+{
     return {
         city: weather.name,
-        status: weather.weather.main,
-        description: weather.weather.description,
+        status: weather.weather[0].main,
+        description: weather.weather[0].description,
         humidity: weather.main.humidity,
         temperature: {
             current: weather.main.temp,
@@ -40,5 +40,18 @@ const getDetailedWeatherData = (weather) => {
             speed: weather.wind.speed,
             direction: weather.wind.deg,
         }
+    };
+};
+
+export const getCompactWeatherData = (weather) => {
+    return {
+        city: weather.name,
+        status: weather.weather[0].main,
+        description: weather.weather[0].description,
+        temperature: weather.main.temp,
+        coords: {
+            lon: weather.coord.lon,
+            lat: weather.coord.lat
+        },
     };
 };
