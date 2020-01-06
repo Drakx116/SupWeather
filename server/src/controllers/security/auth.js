@@ -1,4 +1,4 @@
-import { User } from "../../models/users";
+import { User } from "../../models/User";
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -23,7 +23,8 @@ export const register = (req, res) =>
     });
 };
 
-export const login = (req, res) => {
+export const login = (req, res) =>
+{
     User.findOne({ pseudo: req.body.pseudo }, (error, user) =>
     {
         // Checks parameters
@@ -42,7 +43,9 @@ export const login = (req, res) => {
         // Generates and sets user token
         const token = jwt.sign({ email: user.pseudo, id: user._id }, ENV.JWT_SECRET );
 
-        res.cookie('token', token, { httpOnly: true }).status(200).send({
+        res.cookie('user', user._id, { httpOnly: true });
+
+        res.cookie('token', token, { httpOnly: true }).status(200).json({
             id: user._id,
             pseudo: user.pseudo,
             token: token
@@ -50,12 +53,13 @@ export const login = (req, res) => {
     });
 };
 
-export const logout = (req, res) => {
+export const logout = (req, res) =>
+{
+    // Cookie is already checked in the 'needAuthentication' method
+    res.clearCookie('token');
+    res.clearCookie('user');
 
-    if(res.cookie('token')) {
-        res.clearCookie('token');
-    }
-
-    res.json({ 'message': 'User disconnected' });
-
+    res.json({
+        'message': 'User disconnected'
+    });
 };
