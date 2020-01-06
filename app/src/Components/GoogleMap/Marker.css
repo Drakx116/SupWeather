@@ -1,0 +1,22 @@
+.google-maps-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #3351e9;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+.marker-text {
+    position: absolute;
+    top: 16px;
+    font-size: 1.50em;
+    text-shadow: 4px 3px 13px rgba(0,0,0,0.42);
+    font-family: "Roboto", serif;
+    color: #3351e9;
+    font-weight: bolder;
+}
