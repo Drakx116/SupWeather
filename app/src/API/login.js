@@ -11,7 +11,9 @@ export const authAndRedirect = (data, props) => {
         })
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             cookie.save('token', data.token);
+            cookie.save('user', data.id);
 
             // Redirect
             window.location.reload();

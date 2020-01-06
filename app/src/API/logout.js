@@ -13,6 +13,7 @@ export const logout = (data, props) => {
         .then(res => res.json())
         .then(() => {
             cookie.remove('token');
+            cookie.remove('user');
 
             // Redirect
             window.location.reload();
