@@ -30,7 +30,6 @@ class Map extends Component {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data.cities);
                 this.setState({ cities: data.cities })
             });
     }
