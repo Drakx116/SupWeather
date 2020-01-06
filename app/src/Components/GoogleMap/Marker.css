@@ -11,12 +11,23 @@
     transform: translate(-50%, -50%);
 }
 
+.google-maps-marker:hover {
+    cursor: pointer;
+    background-color: #1a2de9;
+}
+
 .marker-text {
     position: absolute;
-    top: 16px;
-    font-size: 1.50em;
+    top: -3px;
+    left: 1em;
+    font-size: 1.2em;
     text-shadow: 4px 3px 13px rgba(0,0,0,0.42);
     font-family: "Roboto", serif;
     color: #3351e9;
     font-weight: bolder;
+    width: auto;
+}
+
+.marker-text:hover {
+    cursor: pointer;
 }

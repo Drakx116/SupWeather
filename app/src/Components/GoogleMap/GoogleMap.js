@@ -1,35 +1,50 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import './Marker.css';
+import { Marker } from "./Marker/Marker";
 
-const AnyReactComponent = ({ text }) => <div className='google-maps-marker'> <div className="marker-text"> {text} </div> </div>;
+class Map extends Component {
+    constructor(props) {
+        super(props);
 
-class SimpleMap extends Component {
-    static defaultProps = {
-        center: {
-            lat: 48.8534,
-            lng: 2.3488
-        },
-        zoom: 5
-    };
+        this.state = {
+            // Paris
+            center: {
+                lat: 48.8534,
+                lng: 2.3488
+            },
+            zoom: 5,
+            cities: []
+        }
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:3000/weather/city/list`)
+            .then(res => {
+                console.log(res);
+            })
+    }
 
     render() {
         return (
             <div style={{ height: '600px', width: '800px' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
+                    defaultCenter={this.state.center}
+                    defaultZoom={this.state.zoom}
                 >
-                    <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text="My Marker"
+                    <Marker
+                        lat={48.955413}
+                        lng={2.337844}
+                        text="Marker"
                     />
                 </GoogleMapReact>
+
+                {/*<ul>*/}
+                {/*    { this.state.cities.map(city => <li>{city.name}</li>)}*/}
+                {/*</ul>*/}
             </div>
         );
     }
 }
 
-export default SimpleMap;
+export default Map;
