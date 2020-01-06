@@ -12,8 +12,9 @@ export class Marker extends React.Component {
     }
 
     render() {
+        const url = `/city/` + this.state.label.toLowerCase();
         return (
-            <a href="">
+            <a href={url}>
                 <div className='google-maps-marker'>
                     <div className="marker-text">
                         { this.state.label }

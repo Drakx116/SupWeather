@@ -28,9 +28,11 @@ class Map extends Component {
                 'User': cookie.load('user')
             }
         })
-            .then(res => {
-                console.log(res);
-            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.cities);
+                this.setState({ cities: data.cities })
+            });
     }
 
     render() {
@@ -41,16 +43,15 @@ class Map extends Component {
                     defaultCenter={this.state.center}
                     defaultZoom={this.state.zoom}
                 >
-                    <Marker
-                        lat={48.955413}
-                        lng={2.337844}
-                        text="Marker"
-                    />
+                    { this.state.cities.map(city =>
+                        <Marker key={city.city}
+                            lat={city.coords.lat}
+                            lng={ city.coords.lon }
+                            text={ city.city }
+                        />
+                    )}
                 </GoogleMapReact>
 
-                {/*<ul>*/}
-                {/*    { this.state.cities.map(city => <li>{city.name}</li>)}*/}
-                {/*</ul>*/}
             </div>
         );
     }
