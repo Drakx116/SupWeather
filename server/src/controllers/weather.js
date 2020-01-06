@@ -32,7 +32,7 @@ const getDetailedWeatherData = (weather) =>
         humidity: weather.main.humidity,
         temperature: {
             current: weather.main.temp,
-            mix: weather.main.temp_min,
+            min: weather.main.temp_min,
             max: weather.main.temp_max,
             feels_like: weather.main.feels_like
         },
