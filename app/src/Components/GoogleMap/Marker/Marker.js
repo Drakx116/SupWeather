@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../Marker.css';
+import './Marker.css';
 
 export class Marker extends React.Component {
     constructor(props) {
