@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Marker } from "./Marker/Marker";
+import cookie from "react-cookies";
 
 class Map extends Component {
     constructor(props) {
@@ -18,7 +19,15 @@ class Map extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/weather/city/list`)
+        fetch(`http://localhost:3000/weather/city/list`,
+            {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': cookie.load('token'),
+                'User': cookie.load('user')
+            }
+        })
             .then(res => {
                 console.log(res);
             })
