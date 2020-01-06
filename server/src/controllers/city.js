@@ -53,7 +53,7 @@ export const getCityByNameAndUser = (req, res) => {
 
 export const getUserCityList = (req, res) =>
 {
-    const userId = req.cookies.user;
+    const userId = req.headers.user;
     if(! userId) {
         return res.status(400).json({ error: 'Cannot find any user' });
     }
