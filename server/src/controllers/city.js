@@ -6,7 +6,7 @@ const API_TOKEN = require('dotenv').config().parsed.WEATHER_API_KEY;
 
 export const addCityUser = (req, res) =>
 {
-    const cityName =  req.body.name.toUpperCase();
+    const cityName =  req.body.name;
     const userId = req.body.user;
 
     if(! (cityName && userId)) {
