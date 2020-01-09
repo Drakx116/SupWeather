@@ -1,6 +1,7 @@
 import React from "react";
 import GoogleMap from "../GoogleMap/GoogleMap";
 import cookie from "react-cookies";
+import {AddCityForm} from "../Forms/AddCityForm/AddCityForm";
 
 export class Dashboard extends React.Component {
     render() {
@@ -12,6 +13,7 @@ export class Dashboard extends React.Component {
                 <h2> Dashboard </h2>
 
                 <GoogleMap />
+                <AddCityForm />
             </div>
         );
     }
