@@ -4,11 +4,8 @@ import cookie from 'react-cookies';
 import { logout } from "../../API/logout";
 import {Dashboard} from "../Dashboard/Dashboard";
 
-class Logout extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+class Logout extends React.Component
+{
     componentDidMount() {
         const token = cookie.load('token');
         logout(
