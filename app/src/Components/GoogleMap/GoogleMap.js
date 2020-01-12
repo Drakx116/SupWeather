@@ -16,7 +16,7 @@ class Map extends Component {
             zoom: 5,
             cities: []
         }
-    }
+    };
 
     componentDidMount() {
         fetch(`http://localhost:3000/weather/city/list`,
@@ -30,7 +30,7 @@ class Map extends Component {
         })
             .then(res => res.json())
             .then(data => {
-                this.setState({ cities: data.cities })
+                this.setState({ cities: data.cities });
             });
     }
 
