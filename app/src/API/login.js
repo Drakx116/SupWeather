@@ -11,12 +11,14 @@ export const authAndRedirect = (data, props) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            cookie.save('token', data.token);
-            cookie.save('user', data.id);
+            if(!(data.error)) {
+                cookie.save('token', data.token);
+                cookie.save('user', data.id);
+            }
 
-            // Redirect
+            // Redirect whatever happens
             window.location.reload();
+
         })
 
         .catch( error => console.error('Error', error) );
