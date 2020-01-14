@@ -70,7 +70,7 @@ class Login extends React.Component {
 
                         <div className="content" >
                             <form method="POST" onSubmit={this.submitForm}>
-                                <input id="pseudo" type="text"  title="email" placeholder="Email" required
+                                <input id="pseudo" type="text"  title="email" placeholder="Pseudo" required
                                        autoFocus value={this.state.pseudo} onChange={this.changePseudo} />
 
                                 <input id="password" type="password"
