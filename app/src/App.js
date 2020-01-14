@@ -16,26 +16,27 @@ function App() {
   return (
     <Router>
         <div className="header">
-            <h2> SupWeather </h2>
             <Navbar isAuth={ token }/>
         </div>
 
-        <Switch>
-            {/* Main routes */}
-            <Route exact path="/" component={ Dashboard } />
+        <div className="container">
+            <Switch>
+                {/* Main routes */}
+                <Route exact path="/" component={ Dashboard } />
 
-            <Route path="/city/:city" component={ City } />
+                <Route path="/city/:city" component={ City } />
 
-            {/* Security */}
-            <Route exact path="/login" component={ Login } />
+                {/* Security */}
+                <Route exact path="/login" component={ Login } />
 
-            <Route exact path="/logout" component={ Logout } />
+                <Route exact path="/logout" component={ Logout } />
 
-            {/* Redirection */}
-            <Route path="/not-found" component={ PageNotFound } />
+                {/* Redirection */}
+                <Route path="/not-found" component={ PageNotFound } />
 
-            <Redirect to="/not-found" />
-        </Switch>
+                <Redirect to="/not-found" />
+            </Switch>
+        </div>
     </Router>
   );
 }

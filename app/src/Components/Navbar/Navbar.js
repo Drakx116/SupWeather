@@ -17,7 +17,7 @@ export class Navbar extends React.Component {
         let navbar = (this.state.isAuth) ? <AuthNavbar /> : <GuestNavbar />;
 
         return (
-            <div className="navbar">
+            <div className="container">
                 { navbar }
             </div>
         );
