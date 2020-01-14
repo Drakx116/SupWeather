@@ -15,7 +15,7 @@ export const logout = (data, props) => {
             cookie.remove('user');
 
             // Redirect
-            window.location.reload();
+            props.history.push('/login');
         })
 
         .catch( error => console.error('Error', error) );
