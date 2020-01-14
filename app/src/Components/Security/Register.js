@@ -76,29 +76,32 @@ export class Register extends React.Component {
     render() {
         return(
             <div className="component-container">
-                <h1 className="page-title"> Create a new account </h1>
 
-                <form onSubmit={this.submitForm}>
-                    <label className="auth-label">
-                        Pseudo :  <br />
-                        <input className="auth-input" type="text" value={this.state.pseudo} onChange={this.changePseudo} />
-                    </label>
+                <div id="auth-form">
+                    <div className="login-card">
+                        <div className="card-title">
+                            <h1 className="page-title"> Sign Up </h1>
+                        </div>
 
-                    <label className="auth-label">
-                        Password :  <br />
-                        <input className="auth-input" type="password" value={this.state.password} onChange={this.changePassword} />
-                    </label>
+                        <div className="content" >
+                            <form method="POST" onSubmit={this.submitForm}>
+                                <input id="pseudo" type="text"  placeholder="Pseudo" required
+                                       autoFocus value={this.state.pseudo} onChange={this.changePseudo} />
+
+                                <input id="password" type="password"
+                                       placeholder="Password" value={this.state.password} onChange={this.changePassword} required />
+
+                                <input id="password" type="password"
+                                       placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} required />
+
+                                <button type="submit" className="btn btn-primary"> Register </button>
+                            </form>
 
 
-                    <label className="auth-label">
-                        Confirm Password :  <br />
-                        <input className="auth-input" type="password" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} />
-                    </label>
-
-                    <input className="auth-submit" type="submit" value="Envoyer" />
-                </form>
-                <br/>
-                <b> { this.state.invalidForm } </b>
+                            <div className="error-box"> { this.state.invalidForm } </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -62,24 +62,26 @@ class Login extends React.Component {
 
         return (
             <div className="component-container">
-                <h1 className="page-title"> Welcome back ! </h1>
 
-                <form onSubmit={this.submitForm}>
-                    <label className="auth-label">
-                        Pseudo :  <br />
-                        <input className="auth-input" type="text" value={this.state.pseudo} onChange={this.changePseudo} />
-                    </label>
+                <div id="auth-form">
+                    <div className="login-card">
+                        <div className="card-title">
+                            <h1 className="page-title"> Sign In </h1>
+                        </div>
 
-                    <label className="auth-label">
-                        Mot de passe :  <br />
-                        <input className="auth-input" type="password" value={this.state.password} onChange={this.changePassword} />
-                    </label>
+                        <div className="content" >
+                            <form method="POST" onSubmit={this.submitForm}>
+                                <input id="pseudo" type="text"  title="email" placeholder="Email" required
+                                       autoFocus value={this.state.pseudo} onChange={this.changePseudo} />
 
-                    <input className="auth-submit" type="submit" value="Envoyer" />
-                </form>
+                                <input id="password" type="password"
+                                       placeholder="Password" value={this.state.password} onChange={this.changePassword} required />
 
-
-                <div className="error-box"> { this.state.invalidForm } </div>
+                                <button type="submit" className="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
