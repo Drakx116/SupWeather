@@ -1,4 +1,4 @@
-export const registerAndRedirect = (data, props) => {
+export const registerAndRedirect = (data) => {
     fetch('http://localhost:3000/auth/register', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -9,7 +9,7 @@ export const registerAndRedirect = (data, props) => {
         .then(res => res.json())
         .then(data => {
             if(!(data.error)) {
-                props.history.push('/login');
+                window.location.reload();
             }
         });
 };

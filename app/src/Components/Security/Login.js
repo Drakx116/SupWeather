@@ -45,8 +45,7 @@ class Login extends React.Component {
                 {
                     pseudo: this.state.pseudo,
                     password: this.state.password,
-                },
-                this.props
+                }
             );
         }
         else {

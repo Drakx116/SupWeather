@@ -1,6 +1,6 @@
 import cookie from "react-cookies";
 
-export const authAndRedirect = (data, props) => {
+export const authAndRedirect = (data) => {
     fetch('http://localhost:3000/auth/login',
         {
             method: 'POST',

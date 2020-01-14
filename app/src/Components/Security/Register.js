@@ -52,8 +52,7 @@ export class Register extends React.Component {
                 {
                     pseudo: pseudo,
                     password: password
-                },
-                this.props
+                }
             );
         }
     }
