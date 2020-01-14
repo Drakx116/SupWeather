@@ -1,4 +1,5 @@
 import * as React from "react";
+import {registerAndRedirect} from "../../API/register";
 
 export class Register extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export class Register extends React.Component {
         const pseudo = this.state.pseudo;
         const password = this.state.password;
         const confirmPassword = this.state.confirmPassword;
-        
+
         let error = false;
 
         if(!(pseudo && password && confirmPassword)) {
@@ -37,7 +38,7 @@ export class Register extends React.Component {
         }
 
         if(!error && password.length < 6) {
-            this.setState({ invalidForm : 'Password is too short. Min : 8 characters.' });
+            this.setState({ invalidForm : 'Password is too short. Min : 6 characters.' });
             error = true;
         }
 
@@ -47,7 +48,13 @@ export class Register extends React.Component {
         }
 
         if(!error) {
-            console.log('Registration not implemented for the moment');
+            registerAndRedirect(
+                {
+                    pseudo: pseudo,
+                    password: password
+                },
+                this.props
+            );
         }
     }
 
