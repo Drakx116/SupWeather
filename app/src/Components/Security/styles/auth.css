@@ -1,0 +1,13 @@
+.auth-label {
+    display: block;
+    margin-top: 0.5em;
+}
+
+.auth-input {
+    padding: 0.3em;
+}
+
+.auth-submit {
+    display: block;
+    margin-top: 1em;
+}

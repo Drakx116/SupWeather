@@ -36,22 +36,26 @@ class Map extends Component {
 
     render() {
         return (
-            <div style={{ height: '600px', width: '800px' }}>
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}
-                    defaultCenter={this.state.center}
-                    defaultZoom={this.state.zoom}
-                >
-                    { this.state.cities.map(city =>
-                        <Marker key={city.city}
-                            lat={city.coords.lat}
-                            lng={ city.coords.lon }
-                            text={ city.city }
-                        />
-                    )}
-                </GoogleMapReact>
+            <div>
+                <h1 className="page-title">  My Cities </h1>
+                <div style={{ height: '600px', width: '800px' }}>
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}
+                        defaultCenter={this.state.center}
+                        defaultZoom={this.state.zoom}
+                    >
+                        { this.state.cities.map(city =>
+                            <Marker key={city.city}
+                                    lat={city.coords.lat}
+                                    lng={ city.coords.lon }
+                                    text={ city.city }
+                            />
+                        )}
+                    </GoogleMapReact>
 
+                </div>
             </div>
+
         );
     }
 }

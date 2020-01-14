@@ -76,28 +76,26 @@ export class Register extends React.Component {
     render() {
         return(
             <div className="component-container">
-                <h2> Create a new account </h2>
+                <h1 className="page-title"> Create a new account </h1>
 
                 <form onSubmit={this.submitForm}>
-                    <label>
+                    <label className="auth-label">
                         Pseudo :  <br />
-                        <input type="text" value={this.state.pseudo} onChange={this.changePseudo} />
+                        <input className="auth-input" type="text" value={this.state.pseudo} onChange={this.changePseudo} />
                     </label>
-                    <br/>
 
-                    <label>
+                    <label className="auth-label">
                         Password :  <br />
-                        <input type="password" value={this.state.password} onChange={this.changePassword} />
+                        <input className="auth-input" type="password" value={this.state.password} onChange={this.changePassword} />
                     </label>
-                    <br/>
 
-                    <label>
+
+                    <label className="auth-label">
                         Confirm Password :  <br />
-                        <input type="password" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} />
+                        <input className="auth-input" type="password" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} />
                     </label>
 
-                    <br /><br/>
-                    <input type="submit" value="Envoyer" />
+                    <input className="auth-submit" type="submit" value="Envoyer" />
                 </form>
                 <br/>
                 <b> { this.state.invalidForm } </b>

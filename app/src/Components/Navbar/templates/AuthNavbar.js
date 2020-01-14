@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import brand from '../images/logo.png';
+
 export class AuthNavbar extends React.Component {
     render() {
         return(
@@ -8,7 +10,7 @@ export class AuthNavbar extends React.Component {
                 <div className="navbar-brand">
                     <Link to="/">
                         <div className="navbar-item">
-                            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="SupWeather" />
+                            <img src={ brand } alt="SupWeather" />
                         </div>
                     </Link>
 

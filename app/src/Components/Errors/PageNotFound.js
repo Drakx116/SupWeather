@@ -4,7 +4,7 @@ export class PageNotFound extends React.Component {
     render() {
         return (
             <div>
-                <h2> This page doesn't exist :/ </h2>
+                <h1 className="page-title"> Oh no ! Page not found :( </h1>
 
                 <a href="/"> Home </a>
             </div>

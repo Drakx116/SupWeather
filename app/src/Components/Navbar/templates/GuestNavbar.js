@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import './../styles/main.css';
+import brand from '../images/logo.png';
+
 export class GuestNavbar extends React.Component {
     render() {
         return(
@@ -8,11 +11,11 @@ export class GuestNavbar extends React.Component {
                 <div className="navbar-brand">
                     <Link to="/">
                         <div className="navbar-item">
-                            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="SupWeather" />
+                            <img className="navbar-brand-image" src={ brand } alt="SupWeather" />
                         </div>
                     </Link>
 
-                    <button className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="burger-menu">
+                    <button className="navbar-burger burger" id="burger-button" aria-label="menu" aria-expanded="false" data-target="burger-menu">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

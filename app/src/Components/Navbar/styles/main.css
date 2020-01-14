@@ -1,0 +1,11 @@
+.navbar-item img {
+    max-height: 3em;
+}
+
+@media (max-width: 1024px) {
+    #burger-button {
+        background-color: transparent;
+        border: 0;
+        height: unset;
+    }
+}

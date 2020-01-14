@@ -1,0 +1,9 @@
+.container {
+
+}
+
+h1.page-title {
+    display: block;
+    margin: 0.75em 0 0.75em 0;
+    font-size: 1.5em;
+}

@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import cookie from "react-cookies";
 
+import './styles/auth.css';
+
 import { authAndRedirect } from "../../API/login";
 
 class Login extends React.Component {
@@ -60,25 +62,24 @@ class Login extends React.Component {
 
         return (
             <div className="component-container">
-                <h2> Welcome back ! </h2>
+                <h1 className="page-title"> Welcome back ! </h1>
 
                 <form onSubmit={this.submitForm}>
-                    <label>
+                    <label className="auth-label">
                         Pseudo :  <br />
-                        <input type="text" value={this.state.pseudo} onChange={this.changePseudo} />
+                        <input className="auth-input" type="text" value={this.state.pseudo} onChange={this.changePseudo} />
                     </label>
-                    <br/>
 
-                    <label>
+                    <label className="auth-label">
                         Mot de passe :  <br />
-                        <input type="password" value={this.state.password} onChange={this.changePassword} />
+                        <input className="auth-input" type="password" value={this.state.password} onChange={this.changePassword} />
                     </label>
 
-                    <br /><br/>
-                    <input type="submit" value="Envoyer" />
+                    <input className="auth-submit" type="submit" value="Envoyer" />
                 </form>
-                <br/>
-                <b> { this.state.invalidForm } </b>
+
+
+                <div className="error-box"> { this.state.invalidForm } </div>
             </div>
         );
     }
