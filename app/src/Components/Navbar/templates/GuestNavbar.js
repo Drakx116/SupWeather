@@ -27,7 +27,7 @@ export class GuestNavbar extends React.Component {
                         <div className="navbar-item">
                             <div className="buttons">
                                 <Link to='/register'>
-                                    <div className="button is-primary">
+                                    <div className="button is-primary" id="register-navbar-button">
                                         Register
                                     </div>
                                 </Link>

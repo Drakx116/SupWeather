@@ -2,6 +2,10 @@
     max-height: 3em;
 }
 
+#register-navbar-button {
+    background-color: #402e82;
+}
+
 @media (max-width: 1024px) {
     #burger-button {
         background-color: transparent;
