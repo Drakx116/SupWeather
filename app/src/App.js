@@ -8,6 +8,7 @@ import Logout from "./Components/Security/Logout";
 import { Navbar } from "./Components/Navbar/Navbar";
 import {PageNotFound} from "./Components/Errors/PageNotFound";
 import {City} from "./Components/City/City";
+import {Register} from "./Components/Security/Register";
 
 function App() {
   // Checks if token exists
@@ -27,6 +28,8 @@ function App() {
                 <Route path="/city/:city" component={ City } />
 
                 {/* Security */}
+                <Route exact path="/register" component={ Register } />
+
                 <Route exact path="/login" component={ Login } />
 
                 <Route exact path="/logout" component={ Logout } />
