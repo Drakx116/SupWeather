@@ -7,16 +7,16 @@ export class GuestNavbar extends React.Component {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <Link to="/">
-                        <a className="navbar-item">
+                        <div className="navbar-item">
                             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="SupWeather" />
-                        </a>
+                        </div>
                     </Link>
 
-                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="burger-menu">
+                    <button className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="burger-menu">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
-                    </a>
+                    </button>
                 </div>
 
                 <div id="burger-menu" className="navbar-menu">
@@ -24,9 +24,9 @@ export class GuestNavbar extends React.Component {
                         <div className="navbar-item">
                             <div className="buttons">
                                 <Link to='/register'>
-                                    <a className="button is-primary">
+                                    <div className="button is-primary">
                                         Register
-                                    </a>
+                                    </div>
                                 </Link>
                             </div>
                         </div>
@@ -34,9 +34,9 @@ export class GuestNavbar extends React.Component {
                         <div className="navbar-item">
                             <div className="buttons">
                                 <Link to="/login">
-                                    <a className="button is-light">
+                                    <div className="button is-light">
                                         Login
-                                    </a>
+                                    </div>
                                 </Link>
                             </div>
                         </div>
