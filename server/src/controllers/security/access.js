@@ -22,12 +22,12 @@ export const checkClientToken = (req, res) => {
     const clientToken = req.headers.authorization;
 
     if(!clientToken) {
-        return res.status(401).json({ error: 'No token provided' });
+        return res.status(401).json({ error: { status: 0 } });
     }
 
     jwt.verify(clientToken, ENV.JWT_SECRET, function(err) {
         return (err)
-             ? res.status(401).json({ error: 'Invalid token' })
+             ? res.status(401).json({ error: { status : 1 } })
              : res.status(200).json({ data: 'Valid token' });
     });
 };
