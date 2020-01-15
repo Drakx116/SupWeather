@@ -6,7 +6,7 @@ const API_TOKEN = require('dotenv').config().parsed.WEATHER_API_KEY;
 
 export const addCityUser = (req, res) =>
 {
-    const cityName =  req.body.name;
+    const cityName =  req.body.name.toUpperCase();
     const userId = req.body.user;
 
     if(! (cityName && userId)) {
@@ -21,7 +21,10 @@ export const addCityUser = (req, res) =>
             return res.json({ error : "This city is already stored for the current user" });
         }
         else {
-            const city = new City(req.body);
+            const city = new City({
+                name: cityName,
+                user: userId
+            });
             city.save((error, newCity) => {
                 if(error) {
                     return res.json({ error: "Cannot save the city." });

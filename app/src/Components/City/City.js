@@ -38,18 +38,29 @@ export class City extends React.Component {
         event.preventDefault();
 
         const { city } = this.props.match.params;
+        const parts = city.split(' ');
+
+        let cityName = "";
+        if(parts[0] === "arrondissement" && parts[1] === "de") {
+            for (let i = 2; i < parts.length; i++) {
+                cityName += parts[i] + " ";
+            }
+        }
+
+        if(!cityName) {
+            cityName = city
+        }
 
         fetch('http://localhost:3000/city/delete', {
             method: 'POST',
             headers: {
                 "Authorization": cookie.load('token'),
                 user: cookie.load('user'),
-                name: city
+                name: cityName
             }
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if(!data.error) {
                     this.props.history.push('/');
                 }
