@@ -33,6 +33,24 @@ export const addCityUser = (req, res) =>
     });
 };
 
+export const deleteCityUser = (req, res) => {
+    const cityName =  req.headers.name.toUpperCase();
+    const userId = req.headers.user;
+
+    if(! (cityName && userId)) {
+        return res.status(400).json({ error: "Missing parameters" });
+    }
+
+    City.deleteOne({ name: cityName, user: userId }, (error) => {
+        if(error) {
+            return res.status(400).json({ error : "Cannot delete the current city." });
+        }
+
+        res.status(200).json({ data: "City well deleted." });
+    });
+
+};
+
 export const getCityByNameAndUser = (req, res) => {
     const cityName =  req.body.name;
     const userId = req.body.user;
@@ -76,9 +94,12 @@ export const getUserCityList = (req, res) =>
                 .catch((error) => console.log(error))
         ))
         .then(data => {
-            const weatherData = [];
+            let weatherData = [];
             data.forEach((cityWeather) => {
-                weatherData.push(getCompactWeatherData(cityWeather))
+                let compactData = getCompactWeatherData(cityWeather);
+                if(compactData) {
+                    weatherData.push(getCompactWeatherData(cityWeather));
+                }
             });
 
             res.status(200).json({ cities: weatherData });
