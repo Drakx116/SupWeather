@@ -6,14 +6,14 @@ const API_TOKEN = require('dotenv').config().parsed.WEATHER_API_KEY;
 
 export const addCityUser = (req, res) =>
 {
-    const cityName =  req.body.name.toUpperCase();
+    const cityName =  req.body.name.trim().toUpperCase();
     const userId = req.body.user;
 
     if(! (cityName && userId)) {
         return res.status(400).json({ error: "Missing parameters" });
     }
 
-    City.findOne(req.body, (error, city) => {
+    City.findOne({ name: cityName, user: userId }, (error, city) => {
         if (error) {
             return res.json({ error : "Cannot check if the city already exists" });
         }
