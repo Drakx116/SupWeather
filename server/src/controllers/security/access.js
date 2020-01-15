@@ -8,14 +8,26 @@ export const needAuthentication = function(req, res, next) {
         return res.status(401).json({ error : 'No token provided.' });
     }
 
-    else {
-        jwt.verify(token, ENV.JWT_SECRET, function(err, decoded) {
-            if (err) {
-                return res.status(401).send({ error : 'Invalid token.' });
-            } else {
-                req.pseudo = decoded.pseudo;
-                next();
-            }
-        });
+    jwt.verify(token, ENV.JWT_SECRET, function(err, decoded) {
+        if (err) {
+            return res.status(401).send({ error : 'Invalid token.' });
+        } else {
+            req.pseudo = decoded.pseudo;
+            next();
+        }
+    });
+};
+
+export const checkClientToken = (req, res) => {
+    const clientToken = req.headers.authorization;
+
+    if(!clientToken) {
+        return res.status(401).json({ error: 'No token provided' });
     }
+
+    jwt.verify(clientToken, ENV.JWT_SECRET, function(err) {
+        return (err)
+             ? res.status(401).json({ error: 'Invalid token' })
+             : res.status(200).json({ data: 'Valid token' });
+    });
 };
