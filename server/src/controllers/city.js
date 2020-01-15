@@ -33,16 +33,23 @@ export const addCityUser = (req, res) =>
     });
 };
 
-// export const deleteCityUser = (req, res) => {
-//     const cityName =  req.body.name;
-//     const userId = req.body.user;
-//
-//     if(! (cityName && userId)) {
-//         return res.status(400).json({ error: "Missing parameters" });
-//     }
-//
-//     // res.status()
-// };
+export const deleteCityUser = (req, res) => {
+    const cityName =  req.headers.name.toUpperCase();
+    const userId = req.headers.user;
+
+    if(! (cityName && userId)) {
+        return res.status(400).json({ error: "Missing parameters" });
+    }
+
+    City.deleteOne({ name: cityName, user: userId }, (error) => {
+        if(error) {
+            return res.status(400).json({ error : "Cannot delete the current city." });
+        }
+
+        res.status(200).json({ data: "City well deleted." });
+    });
+
+};
 
 export const getCityByNameAndUser = (req, res) => {
     const cityName =  req.body.name;

@@ -9,7 +9,9 @@ export class City extends React.Component {
             weather: [],
             temperature: [],
             wind: []
-        }
+        };
+
+        this.deleteCity = this.deleteCity.bind(this);
     }
 
     componentDidMount () {
@@ -32,6 +34,29 @@ export class City extends React.Component {
             });
     }
 
+    deleteCity(event) {
+        event.preventDefault();
+
+        const { city } = this.props.match.params;
+
+        fetch('http://localhost:3000/city/delete', {
+            method: 'POST',
+            headers: {
+                "Authorization": cookie.load('token'),
+                user: cookie.load('user'),
+                name: city
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(!data.error) {
+                    this.props.history.push('/');
+                }
+            });
+    }
+
+
     render() {
         return (
             <div>
@@ -53,7 +78,7 @@ export class City extends React.Component {
                     <li> Direction : { this.state.wind.direction } </li>
                 </ul>
 
-
+                <button onClick={this.deleteCity}> Delete </button>
             </div>
         );
     }
