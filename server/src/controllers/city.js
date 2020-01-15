@@ -33,6 +33,17 @@ export const addCityUser = (req, res) =>
     });
 };
 
+// export const deleteCityUser = (req, res) => {
+//     const cityName =  req.body.name;
+//     const userId = req.body.user;
+//
+//     if(! (cityName && userId)) {
+//         return res.status(400).json({ error: "Missing parameters" });
+//     }
+//
+//     // res.status()
+// };
+
 export const getCityByNameAndUser = (req, res) => {
     const cityName =  req.body.name;
     const userId = req.body.user;
@@ -76,9 +87,12 @@ export const getUserCityList = (req, res) =>
                 .catch((error) => console.log(error))
         ))
         .then(data => {
-            const weatherData = [];
+            let weatherData = [];
             data.forEach((cityWeather) => {
-                weatherData.push(getCompactWeatherData(cityWeather))
+                let compactData = getCompactWeatherData(cityWeather);
+                if(compactData) {
+                    weatherData.push(getCompactWeatherData(cityWeather));
+                }
             });
 
             res.status(200).json({ cities: weatherData });

@@ -44,14 +44,17 @@ const getDetailedWeatherData = (weather) =>
 };
 
 export const getCompactWeatherData = (weather) => {
-    return {
-        city: weather.name,
-        status: weather.weather[0].main,
-        description: weather.weather[0].description,
-        temperature: weather.main.temp,
-        coords: {
-            lon: weather.coord.lon,
-            lat: weather.coord.lat
-        },
-    };
+
+    if(weather.cod === 200) {
+        return {
+            city: weather.name,
+            status: weather.weather[0].main,
+            description: weather.weather[0].description,
+            temperature: weather.main.temp,
+            coords: {
+                lon: weather.coord.lon,
+                lat: weather.coord.lat
+            },
+        };
+    }
 };
