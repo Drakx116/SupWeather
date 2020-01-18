@@ -39,7 +39,8 @@ const getDetailedWeatherData = (weather) =>
         wind: {
             speed: weather.wind.speed,
             direction: weather.wind.deg,
-        }
+        },
+        icon: weather.weather[0].icon
     };
 };
 
