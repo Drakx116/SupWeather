@@ -2,6 +2,7 @@ import * as React from "react";
 import cookie from "react-cookies";
 import './styles/City.css';
 import Thermometer from "react-thermometer-component";
+import Gauge from 'react-radial-gauge';
 
 export class City extends React.Component {
     constructor(props) {
@@ -80,11 +81,28 @@ export class City extends React.Component {
             <div className="weather-item"> Weather : {this.state.weather.status} </div>
             <div className="weather-item"> Description : {this.state.weather.description} </div>
 
-            <div className="weather-item"> Humidity : {this.state.weather.humidity} </div>
-
-            <div className="weather-item">
-                Temperature
+            <div className="humidity">
+                <div className="humidity-gauge">
+                    <div className="humidity-label"> Humidity </div>
+                    <Gauge
+                        size="175"
+                        currentValue={ this.state.weather.humidity }
+                        dialWidth={10}
+                        dialColor="#ECF0F1"
+                        progressWidth={6}
+                        progressColor="#3498DB"
+                        tickLength={6}
+                        tickWidth={2}
+                        tickColor="#3498DB"
+                        needleColor="#f44336"
+                        needleBaseSize={5}
+                        needleBaseColor="#f02412"
+                        needleWidth={5}
+                        needleSharp={true}
+                    />
+                </div>
             </div>
+
             <div className="thermometers">
                 <div className="thermometer-item">
                     <div className="thermometer-label"> Current </div>

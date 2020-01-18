@@ -13,6 +13,18 @@ ul {
     margin-top: 0.5em;
 }
 
+.humidity {
+    display: flex;
+    margin: 2em;
+}
+
+.humidity-gauge {
+    padding: 2em;
+    border: 1px solid #eee;
+    margin: auto;
+    text-align: center;
+}
+
 .thermometers {
     display: flex;
     width: 80%;
@@ -21,16 +33,26 @@ ul {
     align-content: center;
 }
 
-.thermometer-label {
-    display: block;
-    margin: 0.5em;
-    padding-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.thermometer-item {
+.thermometer-item{
+    margin: 1em;
     padding: 2em;
     text-align: center;
     border: 1px solid #eee;
     border-radius: 0.25em;
+}
+
+.thermometer-item, .humidity-gauge {
+    box-shadow: 0 4px 16px -4px rgba(232,232,232,1);
+}
+
+.thermometer-item:hover, .humidity-gauge:hover {
+    box-shadow: 0 4px 20px -4px rgba(216,216,216,1);
+    cursor: pointer;
+}
+
+.thermometer-label, .humidity-label {
+    display: block;
+    margin: 0.5em;
+    padding-bottom: 0.5em;
+    font-weight: bold;
 }
