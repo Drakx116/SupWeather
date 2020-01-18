@@ -1,5 +1,6 @@
 import * as React from "react";
 import cookie from "react-cookies";
+import './styles/City.css';
 
 export class City extends React.Component {
     constructor(props) {
@@ -71,8 +72,7 @@ export class City extends React.Component {
     render() {
         return (
             <div>
-
-                <h1 className="page-title"> { this.state.weather.city } </h1>
+                <h1 className="city-name"> { this.state.weather.city } </h1>
                 Weather : { this.state.weather.status } <br/>
                 Description : { this.state.weather.description } <br/>
                 Humidity : { this.state.weather.humidity } <br/>

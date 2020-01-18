@@ -1,0 +1,9 @@
+h1.city-name {
+    display: block;
+    margin: 0.75em 0 0.75em 0;
+    font-size: 1.5em;
+}
+
+ul {
+    margin-left: 2em;
+}
