@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import './styles/City.css';
 import Thermometer from "react-thermometer-component";
 import Gauge from 'react-radial-gauge';
+import ReactAnimatedWeather from 'react-animated-weather';
 
 export class City extends React.Component {
     constructor(props) {
@@ -72,14 +73,55 @@ export class City extends React.Component {
             });
     }
 
+    getAnimatedIconName() {
+        const weatherAnimatedIcons = {
+            "01d": 'CLEAR_DAY',
+            "01n": 'CLEAR_NIGHT',
+            "02d": 'PARTLY_CLOUDY_DAY',
+            "02n": 'PARTLY_CLOUDY_NIGHT',
+            "03d": 'CLOUDY',
+            "03n": 'CLOUDY',
+            "04d": 'PARTLY_CLOUDY_DAY',
+            "04n": 'PARTLY_CLOUDY_NIGHT',
+            "09d": 'RAIN',
+            "09n": 'RAIN',
+            "10d": 'RAIN',
+            "10n": 'RAIN',
+            "11d": 'WIND',
+            "13d": 'SNOW',
+            "50d": 'FOG'
+        };
+        return weatherAnimatedIcons[this.state.icon];
+    }
+    getAnimatedIconColor() {
+        const weatherAnimatedColors = {
+            "01d": '#ffdc00',
+            "01n": '#ebc900',
+            "02d": '#ffdc00',
+            "02n": '#ebc900',
+            "03d": '#cccccc',
+            "03n": '#dddddd',
+            "04d": '#ebc900',
+            "04n": '#dddddd',
+            "09d": '#666666',
+            "09n": '#666666',
+            "10d": '#666666',
+            "10n": '#666666',
+            "11d": '#5e993d',
+            "13d": '#cfcfcf',
+            "50d": '#bbbbbb'
+        };
+        return weatherAnimatedColors[this.state.icon];
+    }
+
+
 
     render() {
         return <div>
-            <h1 className="city-name"> {this.state.weather.city} </h1>
-            <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} alt={this.state.weather.status}/>
-
-            <div className="weather-item"> Weather : {this.state.weather.status} </div>
-            <div className="weather-item"> Description : {this.state.weather.description} </div>
+            <h1 className="city-name">
+                {this.state.weather.city} -
+                <button onClick={this.deleteCity}> Delete </button>
+            </h1>
 
             <div className="humidity">
                 <div className="humidity-gauge">
@@ -100,6 +142,25 @@ export class City extends React.Component {
                         needleWidth={5}
                         needleSharp={true}
                     />
+                </div>
+
+                <div className="humidity-gauge">
+                    <div className="humidity-label"> {this.state.weather.status} </div>
+                    <div className="weather-item"> {this.state.weather.description} </div>
+                    <div className="weather-item">
+                        <ReactAnimatedWeather
+                            icon={ this.getAnimatedIconName() }
+                            color={ this.getAnimatedIconColor()}
+                            size={ 175 }
+                            animate={ true }
+                        />
+                    </div>
+                </div>
+
+                <div className="humidity-gauge">
+                    <div className="humidity-label"> Wind </div>
+                    <div className="weather-item"> Speed : {this.state.wind.speed } km/h </div>
+                    <div className="weather-item"> Direction : {this.state.wind.direction }°</div>
                 </div>
             </div>
 
@@ -148,18 +209,6 @@ export class City extends React.Component {
                         height="150"
                     />
                 </div>
-            </div>
-
-            <div className="weather-item">
-                Wind :
-                <ul>
-                    <li> Speed : {this.state.wind.speed} </li>
-                    <li> Direction : {this.state.wind.direction} </li>
-                </ul>
-            </div>
-
-            <div className="weather-item">
-                <button onClick={this.deleteCity}> Delete</button>
             </div>
         </div>;
     }
