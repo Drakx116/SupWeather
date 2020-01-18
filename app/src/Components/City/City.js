@@ -2,8 +2,6 @@ import * as React from "react";
 import cookie from "react-cookies";
 import './styles/City.css';
 import Thermometer from "react-thermometer-component";
-import {Marker} from "../GoogleMap/Marker/Marker";
-import GoogleMapReact from "google-map-react";
 
 export class City extends React.Component {
     constructor(props) {
