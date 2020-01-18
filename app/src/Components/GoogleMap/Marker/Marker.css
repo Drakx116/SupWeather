@@ -12,7 +12,7 @@
 
 .google-maps-marker:hover {
     cursor: pointer;
-    transition: ease-in-out 200ms;
+    transition: ease-in-out 1000ms;
 }
 
 .google-maps-marker:hover .marker-info {
