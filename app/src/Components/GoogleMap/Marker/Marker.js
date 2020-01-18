@@ -20,10 +20,10 @@ export class Marker extends React.Component {
                             { this.props.text }
                         </div>
                         <div className="marker-info-value">
-                            Temperature Actuelle : 4.5°
+                            Current temperature : { this.props.temperature }°
                         </div>
                         <div className="marker-info-value">
-
+                            Weather : { this.props.weather }
                         </div>
                     </div>
                 </div>

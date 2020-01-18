@@ -38,7 +38,7 @@ class Map extends Component {
         return (
             <div>
                 <h1 className="page-title">  My Cities </h1>
-                <div style={{ height: '600px', width: '800px' }}>
+                <div className="google-map"  style={{ height: '600px', width: '800px' }}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}
                         defaultCenter={this.state.center}
@@ -49,6 +49,8 @@ class Map extends Component {
                                     lat={city.coords.lat}
                                     lng={ city.coords.lon }
                                     text={ city.city }
+                                    temperature={ city.temperature }
+                                    weather= { city.status }
                             />
                         )}
                     </GoogleMapReact>
