@@ -1,6 +1,9 @@
 import * as React from "react";
 import cookie from "react-cookies";
 import './styles/City.css';
+import Thermometer from "react-thermometer-component";
+import {Marker} from "../GoogleMap/Marker/Marker";
+import GoogleMapReact from "google-map-react";
 
 export class City extends React.Component {
     constructor(props) {
@@ -9,7 +12,8 @@ export class City extends React.Component {
         this.state = {
             weather: [],
             temperature: [],
-            wind: []
+            wind: [],
+            icon: ''
         };
 
         this.deleteCity = this.deleteCity.bind(this);
@@ -32,6 +36,7 @@ export class City extends React.Component {
                 this.setState({ weather: data.weather });
                 this.setState({ temperature: data.weather.temperature });
                 this.setState({ wind: data.weather.wind });
+                this.setState({ icon: data.weather.icon });
             });
     }
 
@@ -70,27 +75,76 @@ export class City extends React.Component {
 
 
     render() {
-        return (
-            <div>
-                <h1 className="city-name"> { this.state.weather.city } </h1>
-                Weather : { this.state.weather.status } <br/>
-                Description : { this.state.weather.description } <br/>
-                Humidity : { this.state.weather.humidity } <br/>
-                Temperature :
-                <ul>
-                    <li> Current : { this.state.temperature.current } </li>
-                    <li> Min : { this.state.temperature.min } </li>
-                    <li> Max : { this.state.temperature.max } </li>
-                    <li> Feels Like : { this.state.temperature.feels_like } </li>
-                </ul>
+        return <div>
+            <h1 className="city-name"> {this.state.weather.city} </h1>
+            <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} alt={this.state.weather.status}/>
+
+            <div className="weather-item"> Weather : {this.state.weather.status} </div>
+            <div className="weather-item"> Description : {this.state.weather.description} </div>
+
+            <div className="weather-item"> Humidity : {this.state.weather.humidity} </div>
+
+            <div className="weather-item">
+                Temperature
+            </div>
+            <div className="thermometers">
+                <div className="thermometer-item">
+                    <div className="thermometer-label"> Current </div>
+                    <Thermometer
+                        theme="light"
+                        value={ this.state.temperature.current }
+                        max="50"
+                        format="°C"
+                        size="medium"
+                        height="150"
+                    />
+                </div>
+                <div className="thermometer-item">
+                    <div className="thermometer-label"> Feels Like </div>
+                    <Thermometer
+                        theme="light"
+                        value={ this.state.temperature.feels_like }
+                        max="50"
+                        format="°C"
+                        size="medium"
+                        height="150"
+                    />
+                </div>
+                <div className="thermometer-item">
+                    <div className="thermometer-label"> Minimum </div>
+                    <Thermometer
+                        theme="light"
+                        value={ this.state.temperature.min }
+                        max="50"
+                        format="°C"
+                        size="medium"
+                        height="150"
+                    />
+                </div>
+                <div className="thermometer-item">
+                    <div className="thermometer-label"> Maximum </div>
+                    <Thermometer
+                        theme="light"
+                        value={ this.state.temperature.max }
+                        max="50"
+                        format="°C"
+                        size="medium"
+                        height="150"
+                    />
+                </div>
+            </div>
+
+            <div className="weather-item">
                 Wind :
                 <ul>
-                    <li> Speed : { this.state.wind.speed } </li>
-                    <li> Direction : { this.state.wind.direction } </li>
+                    <li> Speed : {this.state.wind.speed} </li>
+                    <li> Direction : {this.state.wind.direction} </li>
                 </ul>
-
-                <button onClick={this.deleteCity}> Delete </button>
             </div>
-        );
+
+            <div className="weather-item">
+                <button onClick={this.deleteCity}> Delete</button>
+            </div>
+        </div>;
     }
 }

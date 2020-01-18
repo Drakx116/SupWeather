@@ -7,3 +7,30 @@ h1.city-name {
 ul {
     margin-left: 2em;
 }
+
+.weather-item {
+    display: block;
+    margin-top: 0.5em;
+}
+
+.thermometers {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.thermometer-label {
+    display: block;
+    margin: 0.5em;
+    padding-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.thermometer-item {
+    padding: 2em;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 0.25em;
+}
