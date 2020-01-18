@@ -73,6 +73,12 @@ export class City extends React.Component {
             });
     }
 
+    ucwords(string) {
+        return (string + '').replace(/^(.)|\s+(.)/g, ($1) => {
+            return $1.toUpperCase()
+        });
+    }
+
     getAnimatedIconName() {
         const weatherAnimatedIcons = {
             "01d": 'CLEAR_DAY',
@@ -119,9 +125,9 @@ export class City extends React.Component {
     render() {
         return <div>
             <h1 className="city-name">
-                {this.state.weather.city} -
-                <button onClick={this.deleteCity}> Delete </button>
+                Today, {this.state.weather.city}
             </h1>
+            <button className="button is-danger" onClick={this.deleteCity}> Delete </button>
 
             <div className="humidity">
                 <div className="humidity-gauge">
@@ -145,8 +151,7 @@ export class City extends React.Component {
                 </div>
 
                 <div className="humidity-gauge">
-                    <div className="humidity-label"> {this.state.weather.status} </div>
-                    <div className="weather-item"> {this.state.weather.description} </div>
+                    <div className="humidity-label"> Actual : { this.ucwords(this.state.weather.description) } </div>
                     <div className="weather-item">
                         <ReactAnimatedWeather
                             icon={ this.getAnimatedIconName() }

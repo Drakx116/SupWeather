@@ -24,6 +24,7 @@ ul {
     border: 1px solid #eee;
     margin: auto;
     text-align: center;
+    min-height: 300px;
 }
 
 .thermometers {
