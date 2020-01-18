@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Marker } from "./Marker/Marker";
 import cookie from "react-cookies";
+import './styles/GoogleMap.css';
 
 class Map extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class Map extends Component {
         return (
             <div>
                 <h1 className="page-title">  My Cities </h1>
-                <div className="google-map"  style={{ height: '600px', width: '800px' }}>
+                <div className="google-map"  style={{ height: '600px', width: '100%' }}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}
                         defaultCenter={this.state.center}
