@@ -10,3 +10,33 @@
 #submit-button:hover {
     background-color: #402e82;
 }
+
+@media (max-width: 1024px) {
+    .form-container {
+
+    }
+
+    #dashboard-form {
+
+    }
+
+    #dashboard-form > * {
+
+    }
+}
+
+
+@media (max-width: 768px) {
+
+}
+
+
+@media (max-width: 550px) {
+    #dashboard-form {
+        width: 100%;
+    }
+
+    #input-control {
+        width: 100%
+    }
+}

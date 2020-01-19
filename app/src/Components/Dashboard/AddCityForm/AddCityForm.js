@@ -45,10 +45,10 @@ export class AddCityForm extends React.Component
 
     render() {
         return (
-            <div>
+            <div className="form-container">
                 <form onSubmit={this.addCity} className="control" id="dashboard-form">
                     <div className="field has-addons">
-                        <div className="control">
+                        <div className="control" id="input-control">
                             <input id="city-name" className="input" type="text" value={ this.state.city } onChange={ this.changeCity } required placeholder="Enter a city name ..." />
                         </div>
                         <div className="control">
