@@ -10,8 +10,9 @@ export class Dashboard extends React.Component {
         }
         return (
             <div className="component-container">
-                <GoogleMap />
+                <h1 className="page-title"> My Cities </h1>
                 <AddCityForm />
+                <GoogleMap />
             </div>
         );
     }

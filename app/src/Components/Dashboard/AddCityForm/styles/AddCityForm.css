@@ -1,0 +1,12 @@
+#dashboard-form {
+    display: block;
+    margin: 1em 0 1em 0;
+}
+
+#submit-button {
+    background-color: #533d91
+}
+
+#submit-button:hover {
+    background-color: #402e82;
+}

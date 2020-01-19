@@ -38,7 +38,6 @@ class Map extends Component {
     render() {
         return (
             <div>
-                <h1 className="page-title">  My Cities </h1>
                 <div className="google-map"  style={{ height: '600px', width: '100%' }}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: 'AIzaSyDwSg_hOYaK6Gl-9FLSMIDUeb6cb9vXrGg' }}

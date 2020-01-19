@@ -1,5 +1,6 @@
 import * as React from "react";
 import cookie from "react-cookies";
+import './styles/AddCityForm.css';
 
 export class AddCityForm extends React.Component
 {
@@ -45,13 +46,13 @@ export class AddCityForm extends React.Component
     render() {
         return (
             <div>
-                <form onSubmit={this.addCity} className="control">
+                <form onSubmit={this.addCity} className="control" id="dashboard-form">
                     <div className="field has-addons">
                         <div className="control">
                             <input id="city-name" className="input" type="text" value={ this.state.city } onChange={ this.changeCity } placeholder="Enter a city name ..." />
                         </div>
                         <div className="control">
-                            <input type="submit" className="button is-primary" value="Add" />
+                            <input type="submit" className="button is-info" id="submit-button" value="Add" />
                         </div>
                     </div>
                 </form>
