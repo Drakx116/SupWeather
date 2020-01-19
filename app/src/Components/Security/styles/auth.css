@@ -104,12 +104,32 @@ button:focus {
 }
 
 @media (max-width: 1024px) {
+    #auth-form {
+        margin-top: 1em;
+    }
+
+    #auth-form .login-card {
+        width: 80%;
+    }
+
     #auth-form .login-card button {
         width: 60%;
     }
 }
 
 @media (max-width: 768px) {
+    #auth-form {
+        margin-top: 2em;
+    }
+
+    #auth-form .login-card {
+        width: 100%;
+    }
+
+    #auth-form .login-card .card-title {
+        border-radius: 0;
+    }
+
     #auth-form .login-card button {
         width: 80%;
     }
