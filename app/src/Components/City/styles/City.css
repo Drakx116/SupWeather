@@ -22,22 +22,6 @@ ul {
     align-content: center;
 }
 
-/*.humidity-gauge {*/
-/*    padding: 2em;*/
-/*    border: 1px solid #eee;*/
-/*    margin: auto;*/
-/*    text-align: center;*/
-/*    min-height: 300px;*/
-/*}*/
-
-/*.thermometer-item{*/
-/*    margin: 1em;*/
-/*    padding: 2em;*/
-/*    text-align: center;*/
-/*    border: 1px solid #eee;*/
-/*    border-radius: 0.25em;*/
-/*}*/
-
 .thermometer-item, .humidity-gauge {
     padding: 1em;
     box-shadow: 0 4px 16px -4px rgba(232,232,232,1);
@@ -63,17 +47,6 @@ ul {
         flex-wrap: wrap;
         justify-content: space-between;
     }
-
-    /*.thermometers {*/
-    /*    width: 100%;*/
-    /*    display: flex;*/
-    /*    flex-wrap: wrap;*/
-    /*}*/
-
-    /*.humidity-gauge  .thermometer-item {*/
-    /*    padding: 1em;*/
-    /*    align-items: center;*/
-    /*}*/
 }
 
 @media (max-width: 768px) {
