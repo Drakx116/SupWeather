@@ -45,9 +45,15 @@ export class AddCityForm extends React.Component
     render() {
         return (
             <div>
-                <form onSubmit={this.addCity}>
-                    <input type="text" value={ this.state.city } onChange={ this.changeCity } placeholder="Enter a city name" />
-                    <input type="submit" value="Add" />
+                <form onSubmit={this.addCity} className="control">
+                    <div className="field has-addons">
+                        <div className="control">
+                            <input id="city-name" className="input" type="text" value={ this.state.city } onChange={ this.changeCity } placeholder="Enter a city name ..." />
+                        </div>
+                        <div className="control">
+                            <input type="submit" className="button is-primary" value="Add" />
+                        </div>
+                    </div>
                 </form>
             </div>
         );
