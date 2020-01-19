@@ -99,6 +99,7 @@ export class City extends React.Component {
         };
         return weatherAnimatedIcons[this.state.icon];
     }
+
     getAnimatedIconColor() {
         const weatherAnimatedColors = {
             "01d": '#ffdc00',
@@ -120,14 +121,45 @@ export class City extends React.Component {
         return weatherAnimatedColors[this.state.icon];
     }
 
+    getWindDirection()
+    {
+        let stringDirection = null;
 
+        const windDirection = parseInt(this.state.wind.direction);
+        if(windDirection)
+        {
+            const directions = {
+                "0": "N-NE",
+                "45": "E-NE",
+                "90": "E-SE",
+                "135": "S-SE",
+                "180": "S-SW",
+                "225": "W-SW",
+                "270": "W-NW",
+                "315": "N-NW",
+            };
+
+            for (let degrees = 0; degrees < 360; degrees += 45) {
+                if(windDirection <= degrees) {
+                    if(!(stringDirection)) {
+                        const currentDegreesInterval = (degrees - 45).toString();
+                        stringDirection = directions[currentDegreesInterval];
+                    }
+                }
+            }
+
+            return stringDirection ?? "N-NE";
+        }
+    }
 
     render() {
         return <div>
             <h1 className="city-name">
                 Today, {this.state.weather.city}
             </h1>
-            <button className="button is-danger" onClick={this.deleteCity}> Delete </button>
+            <div className="city-delete-form">
+                <button className="button is-danger" onClick={this.deleteCity}> Delete </button>
+            </div>
 
             <div className="humidity">
                 <div className="humidity-gauge">
@@ -163,9 +195,14 @@ export class City extends React.Component {
                 </div>
 
                 <div className="humidity-gauge">
-                    <div className="humidity-label"> Wind </div>
-                    <div className="weather-item"> Speed : {this.state.wind.speed } km/h </div>
-                    <div className="weather-item"> Direction : {this.state.wind.direction }°</div>
+                    <div className="humidity-label"> { this.getWindDirection() } - {this.state.wind.speed } km/h </div>
+                    <ReactAnimatedWeather
+                        icon="WIND"
+                        color="#5e993d"
+                        size={ 175 }
+                        animate={ true }
+                    />
+
                 </div>
             </div>
 
