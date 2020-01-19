@@ -12,10 +12,16 @@ import {Register} from "./Components/Security/Register";
 
 function App() {
   // Checks if token exists
-  let token = !!(cookie.load('token'));
+  const token = !!(cookie.load('token'));
+  const user = !!(cookie.load('user'));
+  const currentLocation = window.location.pathname;
+  const redirection =  (currentLocation !== "/login" && "/logout" && !(token && user))
+      ? <Redirect to="/logout" />
+      : undefined;
 
   return (
     <Router>
+        { redirection }
         <div className="header">
             <Navbar isAuth={ token }/>
         </div>
