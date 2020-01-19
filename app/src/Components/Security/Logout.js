@@ -2,11 +2,12 @@ import * as React from "react";
 import {Redirect, withRouter} from "react-router-dom";
 import cookie from 'react-cookies';
 import { logout } from "../../API/logout";
-import {Dashboard} from "../Dashboard/Dashboard";
 
 class Logout extends React.Component
 {
-    componentDidMount() {
+    constructor(props) {
+        super(props);
+
         const token = cookie.load('token');
         logout(
             {
@@ -19,7 +20,7 @@ class Logout extends React.Component
     render() {
         return (
             <div>
-                <Redirect to={Dashboard} />
+                <Redirect to="/login"  />
             </div>
         );
     }

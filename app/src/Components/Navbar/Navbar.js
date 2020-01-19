@@ -27,7 +27,6 @@ export class Navbar extends React.Component {
 
 
     render() {
-
         let buttons = (this.state.isAuth)
             ? <AuthButtons />
             : <GuestButtons />;
