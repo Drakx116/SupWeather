@@ -14,7 +14,8 @@
     "react-radial-gauge": "^0.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
-    "react-thermometer-component": "^1.0.1"
+    "react-thermometer-component": "^1.0.1",
+    "react-toggle": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
