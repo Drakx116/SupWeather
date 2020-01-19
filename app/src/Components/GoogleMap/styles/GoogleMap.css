@@ -4,3 +4,10 @@ h1.page-title {
     font-size: 1.8em;
     font-weight: bold;
 }
+
+
+@media (max-width: 550px) {
+    h1.page-title {
+        text-align: center;
+    }
+}
