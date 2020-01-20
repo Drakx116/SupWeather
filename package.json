@@ -1,0 +1,20 @@
+{
+  "name": "SupWeather",
+  "version": "1.0.0",
+  "description": "Express - React Weather Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drakx116/SupWeather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drakx116/SupWeather/issues"
+  },
+  "homepage": "https://github.com/Drakx116/SupWeather#readme"
+}
